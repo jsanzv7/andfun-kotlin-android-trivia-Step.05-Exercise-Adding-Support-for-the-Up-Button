@@ -28,6 +28,7 @@ buildscript {
         google()
         jcenter()
     }
+    // Adding the safe-args dependency to the project Gradle file
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"

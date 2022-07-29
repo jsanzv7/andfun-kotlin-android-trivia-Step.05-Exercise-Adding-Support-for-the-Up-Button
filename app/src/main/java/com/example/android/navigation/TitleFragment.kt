@@ -17,12 +17,12 @@
 package com.example.android.navigation
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
@@ -32,6 +32,34 @@ class TitleFragment : Fragment() {
                 inflater, R.layout.fragment_title, container, false)
         binding.playButton.setOnClickListener (
                 Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment))
+        /* It tells the fragment that it has an options menu. */
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    /**
+     * We're inflating the overflow menu from the XML file and adding it to the menu.
+     *
+     * @param menu The menu object that is being inflated.
+     * @param inflater The MenuInflater object that can be used to inflate the menu resource into the
+     * Menu object.
+     */
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        /* Calling the superclass's implementation of the method. */
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    /**
+     * If the user clicks on an item in the menu, and that item has an associated action, then perform
+     * that action
+     *
+     * @param item The menu item that was selected.
+     * @return The return value is a boolean value.
+     */
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item!!,
+        view!!.findNavController())
+                ||super.onOptionsItemSelected(item)
     }
 }
