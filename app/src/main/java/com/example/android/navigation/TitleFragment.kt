@@ -25,7 +25,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.FragmentTitleBinding
 
+/* The TitleFragment class is a subclass of the Fragment class */
 class TitleFragment : Fragment() {
+    /**
+     * The function returns a View object that is the root of the fragment's layout
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container ViewGroup?
+     * @param savedInstanceState Bundle?
+     * @return The root view of the layout.
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(
@@ -60,7 +69,7 @@ class TitleFragment : Fragment() {
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item!!,
-        view!!.findNavController())
+        requireView().findNavController())
                 ||super.onOptionsItemSelected(item)
     }
 }

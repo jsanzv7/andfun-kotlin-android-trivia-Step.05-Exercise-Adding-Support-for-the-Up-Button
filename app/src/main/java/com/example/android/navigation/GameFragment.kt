@@ -16,6 +16,7 @@
 
 package com.example.android.navigation
 
+import android.graphics.BitmapFactory
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -128,3 +129,4 @@ class GameFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_android_trivia_question, questionIndex + 1, numQuestions)
     }
 }
+
